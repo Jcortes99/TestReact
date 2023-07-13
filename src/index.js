@@ -15,7 +15,6 @@ const App = () => {
       <button onClick={() => setCounter(0)}> 
         zero
       </button>
-      jeje
     </div>
   )
 }
