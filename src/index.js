@@ -3,38 +3,22 @@ import ReactDOM from 'react-dom'
 import { useState } from 'react'
 
 const App = () => {
-  const [ counter, setCounter ] = useState(0)
+  const [clicks, setClicks] = useState({
+    left: 0, right: 0
+  })
 
-  const increaseByOne = () => setCounter(counter+1)
+  const handleLeftClick = () => setClicks({ ...clicks, left: clicks.left + 1 })
 
-  const setZero = () => setCounter(0)
-
-  const increaseBy2 = () => setCounter(counter+2)
+  const handleRightClick = () => setClicks({ ...clicks, right: clicks.right + 1 })
 
   return (
     <div>
-      <Display counter={counter}/>
-
-      <Button 
-      handleClick={increaseByOne}
-      text='+1'
-      />
-
-      <Button 
-      handleClick={increaseBy2}
-      text='+2'
-      />
-
-      <Button 
-      handleClick={setZero}
-      text='0'
-      />
+      {clicks.left}
+      <button onClick={handleLeftClick}>left</button>
+      <button onClick={handleRightClick}>right</button>
+      {clicks.right}
     </div>
   )
 }
-
-const Display = ({ counter }) => <div>{counter}</div>
-
-const Button = ({ handleClick, text}) => <button onClick={handleClick}>{text}</button>
 
 ReactDOM.render(<App />, document.getElementById('root'))
